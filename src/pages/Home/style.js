@@ -43,6 +43,7 @@ export const CarouselTitle = styled.h1`
     color: ${(props) => props.theme.colors.text};
     font-size: 24px;
     font-weight: bold;
-    margin-top: 16px;
+    margin: 16px 0;
+    line-height: 29px;
 `;
 
