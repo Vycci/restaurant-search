@@ -5,17 +5,18 @@ import MaterialIcon from '@material/react-material-icon';
 import { Search, Logo, SearchColumn, CarouselTitle, Wrapper, Map, Carousel} from './style';
 import logo from '../../assets/logo.svg';
 import restaurante from '../../assets/restaurante-fake.png';
-import { Card, RestaurantCard } from '../../components';
+import { Card, RestaurantCard, Modal } from '../../components';
 
 const Home = () => {
     const [inputValue, setInputValue] = useState('');
+    const [modalOpened, setModalOpened] = useState(false);
 
     const settings = {
         dots: false,
         infinite: true,
         speed: 300,
         slidesToShow: 4,
-        slidesToScroll: 4,
+        slidesToScroll: 2,
         adaptiveHeight: true,
     };
 
@@ -36,17 +37,18 @@ const Home = () => {
                     </TextField>
                     <CarouselTitle>Na sua Área</CarouselTitle>
                     <Carousel {...settings}>
-                        <Card photo={restaurante} title="seila"/>
-                        <Card photo={restaurante} title="seila"/>
-                        <Card photo={restaurante} title="seila"/>
-                        <Card photo={restaurante} title="seila"/>
-                        <Card photo={restaurante} title="seila"/>
-                        <Card photo={restaurante} title="seila"/>
+                        <Card photo={restaurante} title="Titulo"/>
+                        <Card photo={restaurante} title="Titulo"/>
+                        <Card photo={restaurante} title="Titulo"/>
+                        <Card photo={restaurante} title="Titulo"/>
+                        <Card photo={restaurante} title="Titulo"/>
+                        <Card photo={restaurante} title="Titulo"/>
                     </Carousel>
                 </Search>
                 <RestaurantCard/>
             </SearchColumn>
             <Map/>
+            <Modal open={modalOpened} onClose={() => setModalOpened(false)} />
         </Wrapper>
     );
 };
