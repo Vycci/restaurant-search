@@ -27,11 +27,6 @@ export const Logo = styled.img`
     align-self: center;
 `;
 
-export const Map = styled.div`
-    background-color: red;
-    width: 500px;
-`;
-
 export const Carousel = styled(Slider)`
     width: 350px;
     .slick-slide{

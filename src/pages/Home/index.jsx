@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 import TextField, { Input } from '@material/react-text-field';
 import MaterialIcon from '@material/react-material-icon';
-import { Search, Logo, SearchColumn, CarouselTitle, Wrapper, Map, Carousel} from './style';
+import { Search, Logo, SearchColumn, CarouselTitle, Wrapper, Carousel} from './style';
 import logo from '../../assets/logo.svg';
 import restaurante from '../../assets/restaurante-fake.png';
-import { Card, RestaurantCard, Modal } from '../../components';
+import { Card, RestaurantCard, Modal, Map } from '../../components';
 
 const Home = () => {
     const [inputValue, setInputValue] = useState('');
