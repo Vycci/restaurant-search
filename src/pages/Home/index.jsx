@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { useSelector } from 'react-redux';
 import TextField, { Input } from '@material/react-text-field';
 import MaterialIcon from '@material/react-material-icon';
 import { Search, Logo, SearchColumn, CarouselTitle, Wrapper, Carousel} from './style';
@@ -11,10 +12,12 @@ const Home = () => {
     const [inputValue, setInputValue] = useState('');
     const [query, setQuery] = useState(null);
     const [modalOpened, setModalOpened] = useState(false);
+    const { restaurants } = useSelector((state) => state.restaurants);
 
     const settings = {
         dots: false,
         infinite: true,
+        autoplay: true,
         speed: 300,
         slidesToShow: 4,
         slidesToScroll: 2,
@@ -45,15 +48,26 @@ const Home = () => {
                     </TextField>
                     <CarouselTitle>Na sua Área</CarouselTitle>
                     <Carousel {...settings}>
-                        <Card photo={restaurante} title="Titulo"/>
-                        <Card photo={restaurante} title="Titulo"/>
-                        <Card photo={restaurante} title="Titulo"/>
-                        <Card photo={restaurante} title="Titulo"/>
-                        <Card photo={restaurante} title="Titulo"/>
-                        <Card photo={restaurante} title="Titulo"/>
+                        {restaurants.map((restaurant) => (
+                            <Card 
+                                photo={restaurant.photos ? restaurant.photo[0].getUrl() : restaurante} 
+                                title={restaurant.name}
+                            />
+                        ))}
+                        <Card photo={restaurante} title="nome"/>
+                        <Card photo={restaurante} title="nome"/>
+                        <Card photo={restaurante} title="nome"/>
+                        <Card photo={restaurante} title="nome"/>
+                        <Card photo={restaurante} title="nome"/>
+                        <Card photo={restaurante} title="nome"/>
+                        <Card photo={restaurante} title="nome"/>
+                        <Card photo={restaurante} title="nome"/>
                     </Carousel>
                 </Search>
-                <RestaurantCard/>
+                {restaurants.map((restaurant) => (
+                    <RestaurantCard restaurant={restaurant} />
+                ))}
+                <RestaurantCard />
             </SearchColumn>
             <Map query={query} />
             <Modal open={modalOpened} onClose={() => setModalOpened(false)} />
