@@ -3,8 +3,8 @@ import { Restaurant, RestaurantInfo, Title, Address, RestaurantPhoto } from "./s
 import ReactStars from 'react-rating-stars-component';
 import Restaurante from '../../assets/restaurante-fake.png';
 
-const RestaurantCard = ({ restaurant }) => ( 
-    <Restaurant>
+const RestaurantCard = ({ restaurant, onClick }) => ( 
+    <Restaurant onClick={onClick}>
         <RestaurantInfo>
             <Title>{/*restaurant.name*/}Restaurante</Title>
             <ReactStars count={5} value={/*restaurant.rating*/4} edit={false} isHalf activeColor="#e7711c" />

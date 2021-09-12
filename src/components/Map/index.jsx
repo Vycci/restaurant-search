@@ -77,7 +77,7 @@ export const MapContainer = (props) => {
     }
 
     return <Map google={google} centerAroundCurrentLocation onReady={onMapReady}
-    onRecenter={onMapReady}>
+    onRecenter={onMapReady} {...props}>
         {restaurants.map((restaurant) =>(
             <Marker 
                 key={restaurant.place_id} name={restaurant.name}

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import TextField, { Input } from '@material/react-text-field';
 import MaterialIcon from '@material/react-material-icon';
-import { Search, Logo, SearchColumn, CarouselTitle, Wrapper, Carousel} from './style';
+import { Search, Logo, SearchColumn, CarouselTitle, Wrapper, Carousel, ModalTitle, ModalContent} from './style';
 import logo from '../../assets/logo.svg';
 import restaurante from '../../assets/restaurante-fake.png';
 import { Card, RestaurantCard, Modal, Map } from '../../components';
@@ -11,8 +11,9 @@ import { Card, RestaurantCard, Modal, Map } from '../../components';
 const Home = () => {
     const [inputValue, setInputValue] = useState('');
     const [query, setQuery] = useState(null);
+    const [placeId, setPlaceId] = useState(null);
     const [modalOpened, setModalOpened] = useState(false);
-    const { restaurants } = useSelector((state) => state.restaurants);
+    const { restaurants, selectedRestaurant } = useSelector((state) => state.restaurants);
 
     const settings = {
         dots: false,
@@ -28,6 +29,11 @@ const Home = () => {
         if(e.key === 'Enter'){
             setQuery(inputValue);
         }
+    }
+
+    function handleOpenModal(placeId){
+        setPlaceId(placeId);
+        setModalOpened(true);
     }
 
     return(
@@ -65,12 +71,17 @@ const Home = () => {
                     </Carousel>
                 </Search>
                 {restaurants.map((restaurant) => (
-                    <RestaurantCard restaurant={restaurant} />
+                    <RestaurantCard onClick={() => handleOpenModal(restaurant.place_id)} restaurant={restaurant} />
                 ))}
-                <RestaurantCard />
+                <RestaurantCard onClick={() => handleOpenModal(1)} />
             </SearchColumn>
-            <Map query={query} />
-            <Modal open={modalOpened} onClose={() => setModalOpened(false)} />
+            <Map query={query} placeId={placeId} />
+            <Modal open={modalOpened} onClose={() => setModalOpened(false)}>
+                <ModalTitle>{/*selectedRestaurant?.name*/}Nome do Restaurante</ModalTitle>
+                <ModalContent>{/*selectedRestaurant?.formatted_phone_number*/}(11) 4002-8922</ModalContent>
+                <ModalContent>{/*selectedRestaurant?.formatted_address*/}Rua Avenida</ModalContent>
+                <ModalContent>{/*selectedRestaurant?.opening_hours?.open_now ? 'Aberto' : 'Fechado'*/}Aberto</ModalContent>
+            </Modal>
         </Wrapper>
     );
 };
