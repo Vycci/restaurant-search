@@ -10,13 +10,13 @@ const RestaurantCard = ({ restaurant, onClick }) => {
     return (
         <Restaurant onClick={onClick}>
             <RestaurantInfo>
-                <Title>{/*restaurant.name*/}Restaurante</Title>
-                <ReactStars count={5} value={/*restaurant.rating*/4} edit={false} isHalf activeColor="#e7711c" />
-                <Address>{/*restaurant.vicinity || restaurant.formatted_address*/}Endereço</Address>
+                <Title>{restaurant.name}</Title>
+                <ReactStars count={5} value={restaurant.rating} edit={false} isHalf activeColor="#e7711c" />
+                <Address>{restaurant.vicinity || restaurant.formatted_address}</Address>
             </RestaurantInfo>
             <RestaurantPhoto 
                 imageLoaded={imageLoaded}
-                src={/*restaurant.photos ? restaurant.photos[0].getUrl() : */Restaurante} 
+                src={restaurant.photos ? restaurant.photos[0].getUrl() : Restaurante} 
                 alt="Foto do Restaurante" 
                 onLoad={() => setImageLoaded(true)}
             />
