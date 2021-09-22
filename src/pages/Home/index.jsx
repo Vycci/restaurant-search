@@ -62,14 +62,6 @@ const Home = () => {
                                         title={restaurant.name}
                                     />
                                 ))}
-                                <Card photo={restaurante} title="nome"/>
-                                <Card photo={restaurante} title="nome"/>
-                                <Card photo={restaurante} title="nome"/>
-                                <Card photo={restaurante} title="nome"/>
-                                <Card photo={restaurante} title="nome"/>
-                                <Card photo={restaurante} title="nome"/>
-                                <Card photo={restaurante} title="nome"/>
-                                <Card photo={restaurante} title="nome"/>
                             </Carousel>
                         </>
                     ) : (
