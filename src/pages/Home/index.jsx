@@ -86,13 +86,12 @@ const Home = () => {
             <Modal open={modalOpened} onClose={() => setModalOpened(false)}>
                 {selectedRestaurant ? (
                     <>
-                        <ModalTitle>{/*selectedRestaurant?.name*/}Nome do Restaurante</ModalTitle>
-                        <ModalContent>{/*selectedRestaurant?.formatted_phone_number*/}(11) 4002-8922</ModalContent>
-                        <ModalContent>{/*selectedRestaurant?.formatted_address*/}Rua Avenida</ModalContent>
-                        <ModalContent>{/*selectedRestaurant?.opening_hours?.open_now 
+                        <ModalTitle>{selectedRestaurant?.name}</ModalTitle>
+                        <ModalContent>{selectedRestaurant?.formatted_phone_number}</ModalContent>
+                        <ModalContent>{selectedRestaurant?.formatted_address}</ModalContent>
+                        <ModalContent>{selectedRestaurant?.opening_hours?.open_now 
                             ? 'Aberto' 
-                            : 'Fechado'*/}
-                            Aberto
+                            : 'Fechado'}
                         </ModalContent>
                     </>
                 ) : (
